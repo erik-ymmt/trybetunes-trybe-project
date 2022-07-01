@@ -9,7 +9,27 @@ import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isBtnDisabled: true,
+      login: '',
+    };
+  }
+
+  handleInput = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  loginValidation = () => {};
+
+  handleClick = () => {}
+
   render() {
+    const { isBtnDisabled, login } = this.state;
     return (
       <>
         <p>TrybeTunes</p>
@@ -19,10 +39,22 @@ class App extends React.Component {
           <Route path="/favorites" component={ Favorites } />
           <Route path="/profile" component={ Profile } exact />
           <Route path="/profile/edit" component={ ProfileEdit } />
-          <Route path="/" component={ Login } exact />
+          <Route
+            exact
+            path="/"
+            render={ (props) => (
+              <Login
+                name="login"
+                isBtnDisabled={ isBtnDisabled }
+                handleClick={ this.handleClick }
+                onChange={ this.handleInput }
+                value={ login }
+                { ...props }
+              />
+            ) }
+          />
           <Route path="*" component={ NotFound } />
         </Switch>
-
       </>
     );
   }
