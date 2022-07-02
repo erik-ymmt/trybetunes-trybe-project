@@ -9,22 +9,9 @@ import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
 
 class App extends React.Component {
-  // constructor() {
-  //   super();
-
-  //   this.satate = {
-  //     isLogged: false;
-  //   }
-  // }
-
-  // logUserIn() {
-  //   this.setState({ isLogged: true });
-  // }
-
   render() {
     return (
-      <>
-        <p>TrybeTunes</p>
+      <div>
         <Switch>
           <Route path="/search" component={ Search } />
           <Route path="/album/:id" component={ Album } />
@@ -45,7 +32,7 @@ class App extends React.Component {
           </Route> */}
           <Route path="*" component={ NotFound } />
         </Switch>
-      </>
+      </div>
     );
   }
 }
