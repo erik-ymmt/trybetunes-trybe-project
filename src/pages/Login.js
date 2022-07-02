@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Loading from './Loading';
 import { createUser } from '../services/userAPI';
 
@@ -12,10 +13,6 @@ class Login extends React.Component {
       isLoading: false,
       loggedIn: false,
     };
-  }
-
-  componentWillUnmount() {
-    console.log('leaking-test');
   }
 
   handleInput = ({ target }) => {
@@ -36,11 +33,13 @@ class Login extends React.Component {
   };
 
   handleLogin = async () => {
+    const { history } = this.props;
     const { loginName } = this.state;
     const createUserArgument = { name: loginName };
     this.setState({ isLoading: true });
     await createUser(createUserArgument);
-    this.setState({ loggedIn: true });
+    // this.setState({ loggedIn: true }); << isso cria um warning de leaking data.
+    history.push('/search');
   }
 
   render() {
@@ -74,5 +73,27 @@ class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    action: PropTypes.string,
+    block: PropTypes.func,
+    createHref: PropTypes.func,
+    go: PropTypes.func,
+    goBack: PropTypes.func,
+    goForward: PropTypes.func,
+    length: PropTypes.number,
+    listen: PropTypes.func,
+    location: PropTypes.shape({
+      hash: PropTypes.string,
+      key: PropTypes.string,
+      pathname: PropTypes.string,
+      search: PropTypes.string,
+      state: PropTypes.string,
+    }),
+    push: PropTypes.func,
+    replace: PropTypes.func,
+  }).isRequired,
+};
 
 export default Login;

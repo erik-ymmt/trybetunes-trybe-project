@@ -9,6 +9,18 @@ import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
 
 class App extends React.Component {
+  // constructor() {
+  //   super();
+
+  //   this.satate = {
+  //     isLogged: false;
+  //   }
+  // }
+
+  // logUserIn() {
+  //   this.setState({ isLogged: true });
+  // }
+
   render() {
     return (
       <>
@@ -28,6 +40,9 @@ class App extends React.Component {
               />
             ) }
           />
+          {/* <Route exact path="/">
+            <Login />
+          </Route> */}
           <Route path="*" component={ NotFound } />
         </Switch>
       </>
