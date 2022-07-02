@@ -14,6 +14,10 @@ class Login extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    console.log('leaking-test');
+  }
+
   handleInput = ({ target }) => {
     const { name, value } = target;
     this.setState({
@@ -37,7 +41,6 @@ class Login extends React.Component {
     this.setState({ isLoading: true });
     await createUser(createUserArgument);
     this.setState({ loggedIn: true });
-    // leaking function
   }
 
   render() {

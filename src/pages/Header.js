@@ -11,19 +11,18 @@ class Header extends React.Component {
     };
   }
 
-  fetchUser = async () => {
+  componentDidMount = async () => {
     const response = await getUser();
     this.setState({ nameLogged: response.name, isLoading: false });
-    // leaking function
   }
 
   render() {
     const { isLoading, nameLogged } = this.state;
-    this.fetchUser();
     return (
       <header data-testid="header-component">
         <h2>TrybeTunes</h2>
-        {isLoading ? <p>Carregando...</p> : <p>{ nameLogged }</p>}
+        {isLoading
+          ? <p>Carregando...</p> : <p data-testid="header-user-name">{ nameLogged }</p>}
       </header>
     );
   }
