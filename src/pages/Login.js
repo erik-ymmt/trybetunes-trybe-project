@@ -36,17 +36,14 @@ class Login extends React.Component {
     const createUserArgument = { name: loginName };
     this.setState({ isLoading: true });
     await createUser(createUserArgument);
-    this.setState({ isLoading: false });
     this.setState({ loggedIn: true });
+    // leaking function
   }
 
   render() {
     const { isBtnDisabled, isLoading, loggedIn, loginName } = this.state;
-    if (isLoading) {
-      return <Loading />;
-    } if (loggedIn) {
-      return <Redirect to="/search" />;
-    }
+    if (loggedIn) return <Redirect to="/search" />;
+    if (isLoading) return <Loading />;
     return (
       <div data-testid="page-login">
         <h2>Login</h2>
