@@ -101,7 +101,7 @@ class Search extends React.Component {
             {this.showFoundAlbums()}
           </div>
         )
-          : <p>Else</p>}
+          : <p>Procure por artistas e músicas!</p>}
       </div>
     );
   }
