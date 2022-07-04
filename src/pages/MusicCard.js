@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -12,11 +13,21 @@ class MusicCard extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.loadFavorite();
+  }
+
   createFavoriteMusic = () => {
     const { trackName, previewUrl, trackId, trackImg } = this.props;
     return {
       trackName, previewUrl, trackId, trackImg,
     };
+  }
+
+  loadFavorite = () => {
+    const { favoriteSongsList, trackId } = this.props;
+    const isFavorite = favoriteSongsList.some((song) => song.trackId === trackId);
+    this.setState({ isLoading: false, favorite: isFavorite });
   }
 
   saveFavorite = async ({ target }) => {
@@ -41,7 +52,7 @@ class MusicCard extends React.Component {
           .
         </audio>
         {isLoading
-          ? <p>Carregando...</p>
+          ? <Loading />
           : (
             <label
               data-testid={ `checkbox-music-${trackId}` }
@@ -67,6 +78,12 @@ MusicCard.propTypes = {
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   trackImg: PropTypes.string.isRequired,
+  favoriteSongsList: PropTypes.arrayOf(PropTypes.shape({
+    trackName: PropTypes.string,
+    previewUrl: PropTypes.string,
+    trackId: PropTypes.number,
+    trackImg: PropTypes.string,
+  })).isRequired,
 };
 
 export default MusicCard;

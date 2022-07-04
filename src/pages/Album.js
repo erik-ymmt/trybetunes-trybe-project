@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
+import Loading from './Loading';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   constructor() {
@@ -12,11 +14,19 @@ class Album extends React.Component {
       albumName: '',
       tracksList: '',
       isFetchMusicDone: false,
+      isFetchFavoriteDone: false,
+      favoriteSongs: [],
     };
   }
 
   componentDidMount() {
     this.fetchMusic();
+    this.fetchLocalFavoriteSongs();
+  }
+
+  fetchLocalFavoriteSongs = async () => {
+    const favoriteSongsResponse = await getFavoriteSongs();
+    this.setState({ favoriteSongs: favoriteSongsResponse, isFetchFavoriteDone: true });
   }
 
   fetchMusic = async () => {
@@ -31,7 +41,8 @@ class Album extends React.Component {
   }
 
   render() {
-    const { artistName, albumName, tracksList, isFetchMusicDone } = this.state;
+    const { artistName, albumName, tracksList,
+      isFetchMusicDone, isFetchFavoriteDone, favoriteSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -45,7 +56,7 @@ class Album extends React.Component {
           {' '}
           { albumName }
         </div>
-        {isFetchMusicDone
+        {isFetchMusicDone && isFetchFavoriteDone
           ? (
             <div>
               {tracksList.map((track) => (
@@ -55,10 +66,11 @@ class Album extends React.Component {
                   trackId={ track.trackId }
                   trackImg={ track.artworkUrl100 }
                   key={ track.trackId }
+                  favoriteSongsList={ favoriteSongs }
                 />
               ))}
             </div>)
-          : <p>Carregando...</p>}
+          : <Loading /> }
       </div>
     );
   }
