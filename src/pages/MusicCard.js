@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends React.Component {
@@ -30,11 +30,16 @@ class MusicCard extends React.Component {
     this.setState({ isLoading: false, favorite: isFavorite });
   }
 
-  saveFavorite = async ({ target }) => {
+  handleFavorite = async ({ target }) => {
     this.setState({ isLoading: true });
     const favoriteMusic = this.createFavoriteMusic();
-    if (target.checked) await addSong(favoriteMusic);
-    this.setState({ isLoading: false, favorite: true });
+    if (target.checked) {
+      await addSong(favoriteMusic);
+      this.setState({ isLoading: false, favorite: true });
+    } else {
+      await removeSong(favoriteMusic);
+      this.setState({ isLoading: false, favorite: false });
+    }
   }
 
   render() {
@@ -62,7 +67,7 @@ class MusicCard extends React.Component {
               <input
                 type="checkbox"
                 id={ trackId }
-                onChange={ this.saveFavorite }
+                onChange={ this.handleFavorite }
                 checked={ favorite }
               />
               Favoritar Música
