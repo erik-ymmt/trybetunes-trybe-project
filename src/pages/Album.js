@@ -25,6 +25,7 @@ class Album extends React.Component {
   }
 
   fetchLocalFavoriteSongs = async () => {
+    this.setState({ isFetchFavoriteDone: false });
     const favoriteSongsResponse = await getFavoriteSongs();
     this.setState({ favoriteSongs: favoriteSongsResponse, isFetchFavoriteDone: true });
   }
@@ -67,6 +68,7 @@ class Album extends React.Component {
                   trackImg={ track.artworkUrl100 }
                   key={ track.trackId }
                   favoriteSongsList={ favoriteSongs }
+                  refreshFavoriteTracks={ this.fetchLocalFavoriteSongs }
                 />
               ))}
             </div>)

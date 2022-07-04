@@ -27,9 +27,6 @@ class App extends React.Component {
               />
             ) }
           />
-          {/* <Route exact path="/">
-            <Login />
-          </Route> */}
           <Route path="*" component={ NotFound } />
         </Switch>
       </div>

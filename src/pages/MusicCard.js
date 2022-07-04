@@ -31,14 +31,17 @@ class MusicCard extends React.Component {
   }
 
   handleFavorite = async ({ target }) => {
+    const { refreshFavoriteTracks } = this.props;
     this.setState({ isLoading: true });
     const favoriteMusic = this.createFavoriteMusic();
     if (target.checked) {
       await addSong(favoriteMusic);
+      await refreshFavoriteTracks();
       this.setState({ isLoading: false, favorite: true });
     } else {
       await removeSong(favoriteMusic);
       this.setState({ isLoading: false, favorite: false });
+      await refreshFavoriteTracks();
     }
   }
 
@@ -70,7 +73,7 @@ class MusicCard extends React.Component {
                 onChange={ this.handleFavorite }
                 checked={ favorite }
               />
-              Favoritar Música
+              Favorita
             </label>)}
 
       </div>
@@ -81,12 +84,13 @@ class MusicCard extends React.Component {
 MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
-  trackId: PropTypes.number.isRequired,
+  trackId: PropTypes.string.isRequired,
   trackImg: PropTypes.string.isRequired,
+  refreshFavoriteTracks: PropTypes.func.isRequired,
   favoriteSongsList: PropTypes.arrayOf(PropTypes.shape({
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
-    trackId: PropTypes.number,
+    trackId: PropTypes.string,
     trackImg: PropTypes.string,
   })).isRequired,
 };

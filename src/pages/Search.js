@@ -37,7 +37,6 @@ class Search extends React.Component {
     const { searchInput } = this.state;
     this.setState({ searchInputHistory: searchInput });
     this.setState({ searchInput: '' }, this.fetchAlbums);
-    // chamar um state resultado da fetchAlbums();
   }
 
   fetchAlbums = async () => {
