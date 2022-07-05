@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Header from './Header';
+import Header from '../components/Header';
 
 class Search extends React.Component {
   constructor() {
