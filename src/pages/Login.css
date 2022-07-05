@@ -1,0 +1,45 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  align-items: center;
+  background-color: #023031;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-weight: 200;
+  height: 100vh;
+  justify-content: center;
+  row-gap: 25px;
+}
+
+form {
+  display: grid;
+  row-gap: 5px;
+}
+
+.login-input {
+  border-radius: 2px;
+  font-family: Poppins , BlinkMacSystemFont , sans-serif;
+  font-size: 1.2rem;
+  padding: 7px;
+  text-align: center;
+  width: 300px;
+}
+
+.main-btn {
+  background-color: #2fc18c;
+  border-radius: 2px;
+  color: #023031;
+  font-family: Poppins , BlinkMacSystemFont , sans-serif;
+  font-size: 1.2rem;
+  padding: 7px;
+}
+
+.main-btn:hover {
+  background-color: rgb(216, 216, 216);
+}

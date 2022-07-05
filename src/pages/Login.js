@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
+import './Login.css';
+import TunesLogo from '../images/trybe-tunes-logo.png';
 
 class Login extends React.Component {
   constructor() {
@@ -47,7 +49,8 @@ class Login extends React.Component {
     if (loggedIn) return <Redirect to="/search" />;
     if (isLoading) return <Loading />;
     return (
-      <div data-testid="page-login">
+      <div className="login-container" data-testid="page-login">
+        <img src={ TunesLogo } alt="trybe tunes logo" />
         <h2>Login</h2>
         <form>
           <label htmlFor="login">
@@ -58,6 +61,8 @@ class Login extends React.Component {
               data-testid="login-name-input"
               onChange={ this.handleInput }
               value={ loginName }
+              placeholder="Nome do usuário"
+              className="login-input"
             />
           </label>
           <button
@@ -65,6 +70,7 @@ class Login extends React.Component {
             data-testid="login-submit-button"
             disabled={ isBtnDisabled }
             onClick={ this.handleLogin }
+            className="main-btn"
           >
             Entrar
           </button>
