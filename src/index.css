@@ -1,3 +1,19 @@
+:root {
+
+  --primary-font: poppins , 'Segoe UI' , 'Roboto' , 'Oxygen' , 'Ubuntu' , sans-serif;
+
+  --dark-green: #023031;
+
+  --light-green: #2fc18c;
+
+  --light-grey: #f0f2f5;
+
+  --medium-grey: rgb(50, 50, 50);
+
+  --dark-grey: rgb(25, 25, 25);
+
+}
+
 body {
   margin: 0;
   font-family: Poppins, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

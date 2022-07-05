@@ -47,8 +47,10 @@ class Search extends React.Component {
     this.setState({ isSearchLoading: false, isSearchDone: true, albums: responseAlbums });
   }
 
+  shortenName = (name) => name.replace(',', '').split(' ').slice(0, 6).join(' ');
+
   showFoundAlbums = () => {
-    const { albums } = this.state;
+    const { albums } = this.state; console.log(albums);
     if (albums.length === 0) return <p>Nenhum álbum foi encontrado</p>;
     return albums.map((album) => (
       <Link
@@ -56,7 +58,14 @@ class Search extends React.Component {
         key={ album.collectionId }
         data-testid={ `link-to-album-${album.collectionId}` }
       >
-        { album.collectionName }
+        <div className="album-card">
+          <img src={ album.artworkUrl100 } alt={ album.collectionName } />
+          <div>
+            <h3>{ this.shortenName(album.collectionName) }</h3>
+            <span>{ this.shortenName(album.artistName) }</span>
+          </div>
+
+        </div>
       </Link>
     ));
   }
@@ -66,9 +75,8 @@ class Search extends React.Component {
       searchInput, isBtnDisabled, isSearchLoading,
       searchInputHistory, isSearchDone } = this.state;
     return (
-      <div data-testid="page-search">
+      <div className="search-container" data-testid="page-search">
         <Header />
-        Search
         { isSearchLoading ? <p>Carregando...</p>
           : (
             <form>
@@ -80,6 +88,8 @@ class Search extends React.Component {
                   data-testid="search-artist-input"
                   onChange={ this.handleInput }
                   value={ searchInput }
+                  placeholder="Nome do Artista"
+                  className="search-input"
                 />
               </label>
               <button
@@ -87,18 +97,21 @@ class Search extends React.Component {
                 data-testid="search-artist-button"
                 disabled={ isBtnDisabled }
                 onClick={ this.handleSearch }
+                className="main-btn"
               >
                 Procurar
               </button>
             </form>)}
         { isSearchDone ? (
-          <div>
+          <div className="results-container">
             <h2>
-              Resultado de álbuns de:
+              Resultado para álbuns de:
               {' '}
-              { searchInputHistory }
+              <em>{ searchInputHistory }</em>
             </h2>
-            {this.showFoundAlbums()}
+            <div className="album-container">
+              {this.showFoundAlbums()}
+            </div>
           </div>
         )
           : <p>Procure por artistas e músicas!</p>}

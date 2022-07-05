@@ -5,13 +5,6 @@
   padding: 0;
 }
 
-:root {
-
-  --dark-green: #023031;
-
-  --light-green: #2fc18c;
-}
-
 .login-container {
   align-items: center;
   background-color: var(--dark-green);

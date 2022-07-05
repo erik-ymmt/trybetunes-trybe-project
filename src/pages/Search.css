@@ -5,12 +5,76 @@
   padding: 0;
 }
 
-:root {
-
-  --dark-green: #023031;
-
-  --light-green: #2fc18c;
-
-  --dark-grey: rgb(15, 15, 15);
+.search-container {
+  align-items: center;
+  background-color: rgb(39, 47, 39);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  row-gap: 50px;
+  width: 100vw;
 }
 
+.search-input {
+  border-radius: 2px;
+  font-family: Poppins , BlinkMacSystemFont , sans-serif;
+  font-size: 1.2rem;
+  padding: 7px;
+  text-align: center;
+  width: 500px;
+}
+
+.results-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  row-gap: 30px;
+}
+
+.album-container {
+  column-gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.album-container a {
+  align-items: center;
+  background-color: var(--light-grey);
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  width: 200px;
+}
+
+.album-container a:hover {
+  box-shadow: var(--light-green) 3px 3px 5px;
+}
+
+.album-card {
+  align-self: flex-end;
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+.album-card div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.album-card img {
+  border-radius: 14px 14px 0 0;
+}
