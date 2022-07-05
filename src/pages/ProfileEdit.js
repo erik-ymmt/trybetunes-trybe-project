@@ -1,15 +1,160 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
+import { getUser, updateUser } from '../services/userAPI';
 
 class ProfileEdit extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isLoading: true,
+      nameLogged: 'nenhum usuário',
+      email: '',
+      description: '',
+      image: '',
+      isBtnDisabled: true,
+    };
+  }
+
+  componentDidMount = async () => {
+    const response = await getUser();
+    this.setState({
+      nameLogged: response.name,
+      email: response.email,
+      description: response.description,
+      image: response.image,
+      isLoading: false,
+    });
+  }
+
+  handleInput = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    }, this.validateInputs);
+  };
+
+  validateInputs = () => {
+    const { nameLogged, email, description, image } = this.state;
+    if (
+      nameLogged.length > 0
+      && email.length > 0
+      && description.length > 0
+      && image.length > 0) {
+      this.setState({ isBtnDisabled: false });
+    } else {
+      this.setState({ isBtnDisabled: true });
+    }
+  }
+
+  saveUserChanges = async () => {
+    const { history } = this.props;
+    const { nameLogged, email, description, image } = this.state;
+    const updatedUser = {
+      name: nameLogged,
+      email,
+      image,
+      description,
+    };
+    await updateUser(updatedUser);
+    history.push('/profile');
+  }
+
   render() {
+    const { isLoading, nameLogged, email,
+      description, image, isBtnDisabled } = this.state;
     return (
-      <div data-testid="page-profile-edit">
+      <div>
         <Header />
-        ProfileEdit
+        {isLoading ? <Loading />
+          : (
+            <div data-testid="page-profile-edit">
+              Editar perfil
+              <form>
+
+                <label htmlFor="name">
+                  Nome
+                  <input
+                    name="nameLogged"
+                    type="text"
+                    data-testid="edit-input-name"
+                    value={ nameLogged }
+                    onChange={ this.handleInput }
+                  />
+                </label>
+
+                <label htmlFor="email">
+                  Email
+                  <input
+                    name="email"
+                    type="text"
+                    data-testid="edit-input-email"
+                    value={ email }
+                    onChange={ this.handleInput }
+                  />
+                </label>
+
+                <label htmlFor="description">
+                  Descrição
+                  <input
+                    name="description"
+                    type="text"
+                    data-testid="edit-input-description"
+                    value={ description }
+                    onChange={ this.handleInput }
+                  />
+                </label>
+
+                <label htmlFor="image">
+                  URL para Foto de Perfil
+                  <input
+                    name="image"
+                    type="text"
+                    data-testid="edit-input-image"
+                    value={ image }
+                    onChange={ this.handleInput }
+                  />
+                </label>
+
+                <button
+                  disabled={ isBtnDisabled }
+                  type="button"
+                  data-testid="edit-button-save"
+                  onClick={ this.saveUserChanges }
+                >
+                  Salvar
+                </button>
+
+              </form>
+            </div>)}
       </div>
+
     );
   }
 }
+
+ProfileEdit.propTypes = {
+  history: PropTypes.shape({
+    action: PropTypes.string,
+    block: PropTypes.func,
+    createHref: PropTypes.func,
+    go: PropTypes.func,
+    goBack: PropTypes.func,
+    goForward: PropTypes.func,
+    length: PropTypes.number,
+    listen: PropTypes.func,
+    location: PropTypes.shape({
+      hash: PropTypes.string,
+      key: PropTypes.string,
+      pathname: PropTypes.string,
+      search: PropTypes.string,
+      state: PropTypes.string,
+    }),
+    push: PropTypes.func,
+    replace: PropTypes.func,
+  }).isRequired,
+};
 
 export default ProfileEdit;
