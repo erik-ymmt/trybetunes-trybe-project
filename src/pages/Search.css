@@ -1,0 +1,16 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+
+  --dark-green: #023031;
+
+  --light-green: #2fc18c;
+
+  --dark-grey: rgb(15, 15, 15);
+}
+

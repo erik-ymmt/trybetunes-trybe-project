@@ -5,9 +5,16 @@
   padding: 0;
 }
 
+:root {
+
+  --dark-green: #023031;
+
+  --light-green: #2fc18c;
+}
+
 .login-container {
   align-items: center;
-  background-color: #023031;
+  background-color: var(--dark-green);
   color: white;
   display: flex;
   flex-direction: column;
@@ -32,9 +39,9 @@ form {
 }
 
 .main-btn {
-  background-color: #2fc18c;
+  background-color: var(--light-green);
   border-radius: 2px;
-  color: #023031;
+  color: var(--dark-green);
   font-family: Poppins , BlinkMacSystemFont , sans-serif;
   font-size: 1.2rem;
   padding: 7px;

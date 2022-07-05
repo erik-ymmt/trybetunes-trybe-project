@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import './Header.css';
+import TunesLogo from '../images/trybe-tunes-logo-cropped.png';
 
 class Header extends React.Component {
   constructor() {
@@ -21,12 +23,45 @@ class Header extends React.Component {
     const { isLoading, nameLogged } = this.state;
     return (
       <header data-testid="header-component">
-        <h2>TrybeTunes</h2>
-        <Link to="/search" data-testid="link-to-search">Pesquisar</Link>
-        <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
-        <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
-        {isLoading
-          ? <p>Carregando...</p> : <p data-testid="header-user-name">{ nameLogged }</p>}
+        <div>
+          <img src={ TunesLogo } alt="trybe tunes logo" />
+          {isLoading
+            ? <p>Carregando...</p>
+            : (
+              <div
+                className="username"
+                data-testid="header-user-name"
+              >
+                { nameLogged }
+
+              </div>)}
+        </div>
+        <nav>
+          <NavLink
+            to="/search"
+            activeClassName="selected"
+            data-testid="link-to-search"
+          >
+            Pesquisar
+
+          </NavLink>
+          <NavLink
+            to="/favorites"
+            activeClassName="selected"
+            data-testid="link-to-favorites"
+          >
+            Favoritas
+
+          </NavLink>
+          <NavLink
+            to="/profile"
+            activeClassName="selected"
+            data-testid="link-to-profile"
+          >
+            Perfil
+
+          </NavLink>
+        </nav>
       </header>
     );
   }
