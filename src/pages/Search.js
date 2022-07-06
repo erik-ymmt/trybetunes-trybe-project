@@ -47,7 +47,10 @@ class Search extends React.Component {
     this.setState({ isSearchLoading: false, isSearchDone: true, albums: responseAlbums });
   }
 
-  shortenName = (name) => name.replace(',', '').split(' ').slice(0, 6).join(' ');
+  shortenName = (name) => {
+    const maxLength = 6;
+    return name.replace(',', '').split(' ').slice(0, maxLength).join(' ');
+  }
 
   showFoundAlbums = () => {
     const { albums } = this.state; console.log(albums);
