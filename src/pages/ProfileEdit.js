@@ -90,7 +90,7 @@ class ProfileEdit extends React.Component {
                   Email
                   <input
                     name="email"
-                    type="text"
+                    type="email"
                     data-testid="edit-input-email"
                     value={ email }
                     onChange={ this.handleInput }
