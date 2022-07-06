@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './Favorites.css';
 
 class Favorites extends React.Component {
   constructor() {
@@ -53,9 +54,11 @@ class Favorites extends React.Component {
     return (
       <div data-testid="page-favorites">
         <Header />
-        {isFetchFavoriteDone
-          ? this.renderFavorites()
-          : <Loading />}
+        <section className="favorites-container">
+          {isFetchFavoriteDone
+            ? this.renderFavorites()
+            : <Loading />}
+        </section>
       </div>
     );
   }

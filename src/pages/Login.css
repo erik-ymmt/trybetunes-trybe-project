@@ -17,7 +17,7 @@
   row-gap: 25px;
 }
 
-form {
+.login-container form {
   display: grid;
   row-gap: 5px;
 }

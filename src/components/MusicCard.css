@@ -1,0 +1,27 @@
+* {
+  border: 1px red solid;
+}
+
+.card-container {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
+.card-container img {
+  border-radius: 100%;
+}
+
+.card-container p {
+  min-width: 250px;
+  text-align: right;
+}
+
+.card-container label {
+  min-width: 250px;
+}
+
+.is-loading {
+  color: grey;
+  display: flex;
+}

@@ -7,19 +7,26 @@
 
 .search-container {
   align-items: center;
-  background-color: rgb(39, 47, 39);
+  background-color: var(--greyish-green);
   color: white;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   row-gap: 50px;
-  width: 100vw;
+
+  /* width: 100vw; */
+}
+
+.search-container form {
+  display: flex;
+  margin: 50px;
 }
 
 .search-input {
   border-radius: 2px;
   font-family: Poppins , BlinkMacSystemFont , sans-serif;
   font-size: 1.2rem;
+  margin-right: 5px;
   padding: 7px;
   text-align: center;
   width: 500px;

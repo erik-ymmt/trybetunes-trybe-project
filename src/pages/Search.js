@@ -75,47 +75,49 @@ class Search extends React.Component {
       searchInput, isBtnDisabled, isSearchLoading,
       searchInputHistory, isSearchDone } = this.state;
     return (
-      <div className="search-container" data-testid="page-search">
+      <>
         <Header />
-        { isSearchLoading ? <p>Carregando...</p>
-          : (
-            <form>
-              <label htmlFor="search-input">
-                <input
-                  type="text"
-                  name="searchInput"
-                  id="search-input"
-                  data-testid="search-artist-input"
-                  onChange={ this.handleInput }
-                  value={ searchInput }
-                  placeholder="Nome do Artista"
-                  className="search-input"
-                />
-              </label>
-              <button
-                type="button"
-                data-testid="search-artist-button"
-                disabled={ isBtnDisabled }
-                onClick={ this.handleSearch }
-                className="main-btn"
-              >
-                Procurar
-              </button>
-            </form>)}
-        { isSearchDone ? (
-          <div className="results-container">
-            <h2>
-              Resultado para álbuns de:
-              {' '}
-              <em>{ searchInputHistory }</em>
-            </h2>
-            <div className="album-container">
-              {this.showFoundAlbums()}
+        <div data-testid="page-search" className="search-container">
+          { isSearchLoading ? <p>Carregando...</p>
+            : (
+              <form>
+                <label htmlFor="search-input">
+                  <input
+                    type="text"
+                    name="searchInput"
+                    id="search-input"
+                    data-testid="search-artist-input"
+                    onChange={ this.handleInput }
+                    value={ searchInput }
+                    placeholder="Nome do Artista"
+                    className="search-input"
+                  />
+                </label>
+                <button
+                  type="button"
+                  data-testid="search-artist-button"
+                  disabled={ isBtnDisabled }
+                  onClick={ this.handleSearch }
+                  className="main-btn"
+                >
+                  Procurar
+                </button>
+              </form>)}
+          { isSearchDone ? (
+            <div className="results-container">
+              <h2>
+                Resultado para álbuns de:
+                {' '}
+                <em>{ searchInputHistory }</em>
+              </h2>
+              <div className="album-container">
+                {this.showFoundAlbums()}
+              </div>
             </div>
-          </div>
-        )
-          : <p>Procure por artistas e músicas!</p>}
-      </div>
+          )
+            : <p>Procure por artistas e músicas!</p>}
+        </div>
+      </>
     );
   }
 }

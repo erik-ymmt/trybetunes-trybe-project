@@ -6,6 +6,8 @@
 
   --light-green: #2fc18c;
 
+  --greyish-green:  rgb(39, 47, 39);
+
   --light-grey: #f0f2f5;
 
   --medium-grey: rgb(50, 50, 50);
@@ -26,10 +28,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.loading {
-  align-items: center;
-  display: flex;
-  justify-content: center;
 }

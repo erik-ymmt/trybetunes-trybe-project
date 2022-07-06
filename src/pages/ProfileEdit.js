@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser, updateUser } from '../services/userAPI';
+import './ProfileEdit.css';
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -70,8 +71,8 @@ class ProfileEdit extends React.Component {
         <Header />
         {isLoading ? <Loading />
           : (
-            <div data-testid="page-profile-edit">
-              Editar perfil
+            <div data-testid="page-profile-edit" className="profile-edit-container">
+              <h3>Editar perfil</h3>
               <form>
 
                 <label htmlFor="name">
@@ -108,7 +109,7 @@ class ProfileEdit extends React.Component {
                 </label>
 
                 <label htmlFor="image">
-                  URL para Foto de Perfil
+                  URL Imagem Perfil
                   <input
                     name="image"
                     type="text"

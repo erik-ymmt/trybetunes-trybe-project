@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import './Header.css';
 import TunesLogo from '../images/trybe-tunes-logo-cropped.png';
@@ -24,7 +24,9 @@ class Header extends React.Component {
     return (
       <header data-testid="header-component">
         <div>
-          <img src={ TunesLogo } alt="trybe tunes logo" />
+          <Link to="/">
+            <img src={ TunesLogo } alt="trybe tunes logo" />
+          </Link>
           {isLoading
             ? <p>Carregando...</p>
             : (

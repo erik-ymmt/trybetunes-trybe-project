@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser } from '../services/userAPI';
+import './Profile.css';
+import ProfilePlaceHolder from '../images/profile-placeholder.png';
 
 class Profile extends React.Component {
   constructor() {
@@ -33,28 +35,36 @@ class Profile extends React.Component {
     return (
       <div data-testid="page-profile">
         <Header />
-        {isLoading ? <Loading />
-          : (
-            <div>
-              <h2>Profile</h2>
-              <h3>{ nameLogged }</h3>
-              <img data-testid="profile-image" src={ image } alt={ nameLogged } />
-              <h4>
-                email:
-                {' '}
-              </h4>
-              <p>
-                { email }
-              </p>
-              <h4>
-                descrição:
-                {' '}
-              </h4>
-              <p>
-                { description }
-              </p>
-              <Link to="/profile/edit">Editar perfil</Link>
-            </div>)}
+        <div className="profile-container">
+          {isLoading ? <Loading />
+            : (
+              <div className="profile-card">
+                <img
+                  data-testid="profile-image"
+                  src={ image || ProfilePlaceHolder }
+                  alt={ nameLogged }
+                />
+                <div>
+                  <h3>{ nameLogged || 'Nome' }</h3>
+                  <h4>
+                    email:
+                    {' '}
+                  </h4>
+                  <p>
+                    { email || 'sem email' }
+                  </p>
+                  <h4>
+                    descrição:
+                    {' '}
+                  </h4>
+                  <p>
+                    { description || 'sem descrição' }
+                  </p>
+                </div>
+                <Link to="/profile/edit">Editar perfil</Link>
+              </div>
+            )}
+        </div>
       </div>
     );
   }

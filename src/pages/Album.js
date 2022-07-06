@@ -5,6 +5,7 @@ import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import Loading from '../components/Loading';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './Album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -12,6 +13,7 @@ class Album extends React.Component {
     this.state = {
       artistName: '',
       albumName: '',
+      albumCover: '',
       tracksList: '',
       isFetchMusicDone: false,
       isFetchFavoriteDone: false,
@@ -36,43 +38,45 @@ class Album extends React.Component {
     this.setState({
       artistName: musicResponse[0].artistName,
       albumName: musicResponse[0].collectionName,
+      albumCover: musicResponse[0].artworkUrl100,
       tracksList: musicResponse.slice(1),
       isFetchMusicDone: true,
     });
   }
 
   render() {
-    const { artistName, albumName, tracksList,
+    const { artistName, albumName, albumCover, tracksList,
       isFetchMusicDone, isFetchFavoriteDone, favoriteSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        <div data-testid="artist-name">
-          Artista:
-          {' '}
-          { artistName }
+        <div className="main-album-container">
+          <section className="album-section">
+            <img src={ albumCover } alt={ albumName } />
+            <div data-testid="album-name">
+              <strong>{ albumName }</strong>
+            </div>
+            <div data-testid="artist-name">
+              { artistName }
+            </div>
+          </section>
+          {isFetchMusicDone && isFetchFavoriteDone
+            ? (
+              <section className="album-tracks">
+                {tracksList.map((track) => (
+                  <MusicCard
+                    trackName={ track.trackName }
+                    previewUrl={ track.previewUrl }
+                    trackId={ track.trackId }
+                    trackImg={ track.artworkUrl100 }
+                    key={ track.trackId }
+                    favoriteSongsList={ favoriteSongs }
+                    refreshFavoriteTracks={ this.fetchLocalFavoriteSongs }
+                  />
+                ))}
+              </section>)
+            : <Loading /> }
         </div>
-        <div data-testid="album-name">
-          Album:
-          {' '}
-          { albumName }
-        </div>
-        {isFetchMusicDone && isFetchFavoriteDone
-          ? (
-            <div>
-              {tracksList.map((track) => (
-                <MusicCard
-                  trackName={ track.trackName }
-                  previewUrl={ track.previewUrl }
-                  trackId={ track.trackId }
-                  trackImg={ track.artworkUrl100 }
-                  key={ track.trackId }
-                  favoriteSongsList={ favoriteSongs }
-                  refreshFavoriteTracks={ this.fetchLocalFavoriteSongs }
-                />
-              ))}
-            </div>)
-          : <Loading /> }
       </div>
     );
   }

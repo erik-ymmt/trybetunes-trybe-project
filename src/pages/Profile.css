@@ -1,0 +1,39 @@
+.profile-container {
+  background-color: var(--greyish-green);
+  color: white;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.profile-card h3 {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.profile-container a {
+  background-color: var(--light-green);
+  border-radius: 2px;
+  color: white;
+  margin: 15px 0;
+  padding: 7px;
+  text-decoration: none;
+}
+
+.profile-container img {
+  border-radius: 50%;
+  margin-top: 15px;
+  width: 200px;
+}
+
+.profile-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.profile-card p {
+  margin-bottom: 15px;
+}

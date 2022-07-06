@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import './MusicCard.css';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -46,11 +47,11 @@ class MusicCard extends React.Component {
   }
 
   render() {
-    const { trackName, previewUrl, trackId, trackImg } = this.props;
+    const { trackName, previewUrl, trackId, trackImg = null } = this.props;
     const { isLoading, favorite } = this.state;
     return (
-      <div>
-        <img src={ trackImg } alt={ trackName } />
+      <div className="card-container">
+        {trackImg && <img src={ trackImg } alt={ trackName } />}
         <p>{ trackName }</p>
         <audio data-testid="audio-component" src={ previewUrl } controls>
           <track kind="captions" />
@@ -60,7 +61,7 @@ class MusicCard extends React.Component {
           .
         </audio>
         {isLoading
-          ? <Loading />
+          ? <p className="is-loading">Carregando...</p>
           : (
             <label
               data-testid={ `checkbox-music-${trackId}` }

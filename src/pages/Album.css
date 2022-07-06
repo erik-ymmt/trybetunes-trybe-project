@@ -1,0 +1,41 @@
+.main-album-container {
+  align-items: center;
+  background-color: var(--greyish-green);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100vh;
+  padding-bottom: 15px;
+}
+
+.album-section {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.album-section img {
+  border-radius: 15px;
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.album-tracks {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+}
+
+.album-tracks img {
+  display: none;
+}
+
+.album-tracks label input {
+  margin-right: 5px;
+}

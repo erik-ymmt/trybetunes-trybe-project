@@ -1,0 +1,53 @@
+.profile-edit-container {
+  align-items: center;
+  background-color: var(--greyish-green);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 90vh;
+}
+
+.profile-edit-container h3 {
+  margin-top: 25px;
+}
+
+
+.profile-edit-container form {
+  align-items: flex-end;
+  border: white 1px solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+.profile-edit-container form input {
+  border-radius: 2px;
+  margin-left: 15px;
+  margin-right: 5px;
+  padding: 7px;
+  width: 400px;
+}
+
+.profile-edit-container form button {
+  align-self: center;
+  background-color: var(--light-green);
+  border-radius: 2px;
+  color: var(--dark-green);
+  font-family: Poppins , BlinkMacSystemFont , sans-serif;
+  font-size: 1.1rem;
+  padding: 7px;
+  width: 25%;
+}
+
+.profile-edit-container form button:hover {
+  cursor: pointer;
+}
+
+.profile-edit-container form button:disabled {
+  background-color: var(--light-grey);
+  color: grey;
+  cursor: wait;
+}
