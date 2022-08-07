@@ -4,7 +4,7 @@
 [Deploy link](https://trybetunes-erik.netlify.app/)
 
 ## About
-&nbsp;&nbsp; In this project I developed a music application. The user is able to search for artists that are listed on the [iTunes API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html). My goal was to develop a page based on Requirements given by [Trybe](https://www.betrybe.com/).
+&nbsp;&nbsp; In this project, I developed a music application. The user can search for artists listed on the '[iTunes API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html)'. My goal was to develop a page based on the requirements given by '[Trybe](https://www.betrybe.com/)'.
 	
 ## Requirements Overview:
 - [x] Login Page;
