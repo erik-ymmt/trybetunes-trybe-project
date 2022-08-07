@@ -30,6 +30,11 @@ class Profile extends React.Component {
     });
   }
 
+  handleError = () => {
+    const profileImg = document.getElementById('profile-image');
+    profileImg.src = ProfilePlaceHolder;
+  }
+
   render() {
     const { isLoading, nameLogged, email, description, image } = this.state;
     return (
@@ -43,6 +48,8 @@ class Profile extends React.Component {
                   data-testid="profile-image"
                   src={ image || ProfilePlaceHolder }
                   alt={ nameLogged }
+                  id="profile-image"
+                  onError={ this.handleError }
                 />
                 <div>
                   <h3>{ nameLogged || 'Nome' }</h3>

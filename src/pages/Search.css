@@ -82,3 +82,10 @@
 .album-card img {
   border-radius: 14px 14px 0 0;
 }
+
+/* .album-card div h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 95%;
+} */
