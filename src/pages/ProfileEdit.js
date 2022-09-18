@@ -77,47 +77,47 @@ class ProfileEdit extends React.Component {
 
                 <label htmlFor="name">
                   Nome
-                  <input
-                    name="nameLogged"
-                    type="text"
-                    data-testid="edit-input-name"
-                    value={ nameLogged }
-                    onChange={ this.handleInput }
-                  />
                 </label>
+                <input
+                  name="nameLogged"
+                  type="text"
+                  data-testid="edit-input-name"
+                  value={ nameLogged }
+                  onChange={ this.handleInput }
+                />
 
                 <label htmlFor="email">
                   Email
-                  <input
-                    name="email"
-                    type="email"
-                    data-testid="edit-input-email"
-                    value={ email }
-                    onChange={ this.handleInput }
-                  />
                 </label>
+                <input
+                  name="email"
+                  type="email"
+                  data-testid="edit-input-email"
+                  value={ email }
+                  onChange={ this.handleInput }
+                />
 
                 <label htmlFor="description">
                   Descrição
-                  <input
-                    name="description"
-                    type="text"
-                    data-testid="edit-input-description"
-                    value={ description }
-                    onChange={ this.handleInput }
-                  />
                 </label>
+                <input
+                  name="description"
+                  type="text"
+                  data-testid="edit-input-description"
+                  value={ description }
+                  onChange={ this.handleInput }
+                />
 
                 <label htmlFor="image">
                   URL Imagem Perfil
-                  <input
-                    name="image"
-                    type="text"
-                    data-testid="edit-input-image"
-                    value={ image }
-                    onChange={ this.handleInput }
-                  />
                 </label>
+                <input
+                  name="image"
+                  type="text"
+                  data-testid="edit-input-image"
+                  value={ image }
+                  onChange={ this.handleInput }
+                />
 
                 <button
                   disabled={ isBtnDisabled }

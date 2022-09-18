@@ -15,6 +15,14 @@
 }
 
 .favorites-container div {
-  margin: 25px 0;
+  margin: 15px 0 35px;
   row-gap: 50px;
+}
+
+@media screen and ( max-width : 700px ) {
+
+  .favorites-container div {
+    row-gap: 0;
+  }
+
 }

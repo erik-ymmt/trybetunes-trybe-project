@@ -17,26 +17,23 @@ class Header extends React.Component {
   componentDidMount = async () => {
     const response = await getUser();
     this.setState({ nameLogged: response.name, isLoading: false });
-  }
+  };
 
   render() {
     const { isLoading, nameLogged } = this.state;
     return (
       <header data-testid="header-component">
-        <div>
+        <div className="topHeader">
           <Link to="/">
             <img src={ TunesLogo } alt="trybe tunes logo" />
           </Link>
-          {isLoading
-            ? <p>Carregando...</p>
-            : (
-              <div
-                className="username"
-                data-testid="header-user-name"
-              >
-                { nameLogged }
-
-              </div>)}
+          {isLoading ? (
+            <p>Carregando...</p>
+          ) : (
+            <div className="username" data-testid="header-user-name">
+              {nameLogged}
+            </div>
+          )}
         </div>
         <nav>
           <NavLink
