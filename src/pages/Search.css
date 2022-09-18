@@ -98,4 +98,12 @@
     margin-right: 0;
     width: 100%;
   }
+
+  .album-container {
+    gap: 12px;
+  }
+
+  .album-container a {
+    width: 45%;
+  }
 }
