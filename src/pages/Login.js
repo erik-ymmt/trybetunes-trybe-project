@@ -63,6 +63,7 @@ class Login extends React.Component {
               value={ loginName }
               placeholder="Nome do usuário"
               className="login-input"
+              title="Nome do usuário com no mínimo 3 caracteres"
             />
           </label>
           <button
@@ -71,6 +72,7 @@ class Login extends React.Component {
             disabled={ isBtnDisabled }
             onClick={ this.handleLogin }
             className="main-btn"
+            title="Nome do usuário com no mínimo 3 caracteres"
           >
             Entrar
           </button>

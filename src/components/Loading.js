@@ -6,7 +6,7 @@ class Loading extends React.Component {
   render() {
     return (
       <div data-testid="page-album" className="loading-container">
-        <img src={ LoadingGif } alt="carregando" width="25%" />
+        <img src={ LoadingGif } alt="carregando" />
       </div>
     );
   }
